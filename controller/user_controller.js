@@ -46,9 +46,24 @@ module.exports.signin = function(req, res) {
 }
 
 // function to create session
-module.exports.createSession = function(req, res) {
+module.exports.createSession = async function(req, res) {
     try {
-
+        // find the user
+        const user = await User.findOne({ email: req.body.uemail });
+        // handle user found
+        if (user) {
+            // Handle mismatching password which don't match
+            if (user.password != req.body.upassword) {
+                // throw new Error();
+                return res.redirect('back');
+            }
+            // handle session creation
+            res.cookie('user_id', user.id);
+            return res.redirect('/user/profile');
+        } else {
+            // handle user not found
+            return res.redirect('/back');
+        }
     } catch (error) {
         console.log(`Error while creating the user ${error}`);
     }
@@ -56,5 +71,5 @@ module.exports.createSession = function(req, res) {
 
 // Function for home controller
 module.exports.profile = function(req, res) {
-    return res.status(200).render('../views/user_profile.ejs', { title: "User Profile Page" });
+    return res.status(200).render('../views/user/user_profile.ejs', { title: "User Profile Page" });
 }
