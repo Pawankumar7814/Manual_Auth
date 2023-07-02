@@ -9,7 +9,7 @@ module.exports.signup = function(req, res) {
 // Function to create a new user
 module.exports.createUser = async function(req, res) {
     try {
-        console.log("Before the useData:" + req.body.uname);
+        // console.log("Before the useData:" + req.body.uname);
         const userData = {
                 name: req.body.uname,
                 email: req.body.uemail,
@@ -20,14 +20,13 @@ module.exports.createUser = async function(req, res) {
         if (userData.password == userData.confirmPassword) {
             const user = await User.findOne({ email: userData.email });
             // console.log(userData);
-            console.log("reqbody " + req.body);
             if (!user) {
                 const createUser = await User.create({
                     username: userData.name,
                     email: userData.email,
                     password: userData.password
                 });
-                console.log("createUser ", createUser);
+                // console.log("createUser ", createUser);
                 return res.redirect('/users/signin');
             } else {
                 return res.redirect('back');
@@ -40,7 +39,6 @@ module.exports.createUser = async function(req, res) {
         console.log(`Error while creating the user: ${error}`);
     }
 }
-
 
 // function for sign in
 module.exports.signin = function(req, res) {
