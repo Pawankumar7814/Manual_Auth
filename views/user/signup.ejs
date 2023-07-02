@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/css/signup.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="container flex justify-content-center align-item-center">
+        <div class="card">
+            <div class="card-title">
+                <h1> Sign Up to our website!</h1>
+            </div>
+            <form action="/users/create" method="post">
+                <div class="mb-1">
+                    <label for="Username">Name</label>
+                    <input class="form-control" type="text" name="uname" id="Username" autocomplete="given-name">
+                </div>
+                <div class="mb-1">
+                    <label for="userEmail">Email</label>
+                    <input class="form-control" type="email" name="uemail" id="userEmail">
+                </div>
+                <div class="mb-1">
+                    <label for="userPassword">Password</label>
+                    <input class="form-control" type="password" name="upassword" id="userPassword">
+                </div>
+                <div class="mb-1">
+                    <label for="userConfirmPassword">Confirm Password</label>
+                    <input class="form-control" type="password" name="uconfirmPassword" id="userConfirmPassword">
+                </div>
+                <div class="mb-1 flex justify-content-center">
+                    <!-- <div class="signupLink">
+                        <a href="#">Forgot Password?</a>
+                    </div> -->
+                    <div class="signupLink">
+                        Are you already a user? <a href="/users/signin">Sign In</a>
+                    </div>
+                </div>
+                <div class="button-group col-center">
+                    <button type="submit" class="btn btn-1">Sign up</button>
+                    <button type="button" class="btn btn-1">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

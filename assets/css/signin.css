@@ -1,0 +1,17 @@
+body {
+    background: linear-gradient(45deg, violet, cadetblue);
+}
+
+.card {
+    background-color: white;
+}
+
+a {
+    color: red;
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
+    color: black;
+}
